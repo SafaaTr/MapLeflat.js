@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام إدارة المستفيدين والخريطة</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- ملف التنسيق -->
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- حاوية الإدخال (الفورم + زر Draw الجانبي) -->
+      <div id="input-section" class="input-section">
+        <form id="user-form" class="card form-card">
+          <h2>إدخال بيانات المستفيد</h2>
+
+          <div class="form-group">
+            <label for="fullName"><i class="fa-solid fa-user"></i> الاسم الكامل:</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              placeholder="أدخل الاسم"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="gender"> <i class="fa-solid fa-person-half-dress"></i>  الجنس: </label>
+            <select id="gender" required name="gender">
+              <option value="" disabled selected>اختر الجنس</option>
+              <option value="male">ذكر <i class="fa-solid fa-person"></i></option>
+              <option value="female">أنثى <i class="fa-solid fa-person-dress"></i></option>
+            </select>
+          </div>
+
+          <!-- حقل إدخال الإحداثيات (حقل واحد) -->
+          <div class="form-group">
+            <label for="coordinates"><i class="fa-solid fa-globe"></i>الإحداثيات (خط العرض , خط الطول):</label>
+            <input
+              type="text"
+              id="coordinates"
+              placeholder="مثال: 33.5138, 36.2765"
+              pattern="^-?\d+(\.\d+)?\s*,\s*-?\d+(\.\d+)?$"
+              title="يرجى إدخال خط العرض ثم فاصلة ثم خط الطول (مثال: 33.5138, 36.2765)"
+              required
+              name="coordinates"
+            />
+          </div>
+
+          <button type="submit" id="btn-save" class="btn btn-save">
+            Save
+          </button>
+          <span id="counter-msg" class="counter-msg">تم إدخال: 0 مستفيدين</span>
+        </form>
+
+        <!-- زر Draw الجانبي خارج الفورم -->
+        <div class="side-action">
+          <button type="button" id="btn-draw" class="btn btn-draw">
+           Draw
+          </button>
+        </div>
+      </div>
+
+     <!-- حاوية الخريطة واللوحة الجانبية (مخفية افتراضياً بواسطة كلاس hidden) -->
+<div id="map-section" class="map-section hidden"> 
+  <!-- اللوحة الجانبية (اليمين - الثلث) -->
+  <div id="side-panel" class="side-panel">
+    <h3>النتائج والتحليلات</h3>
+    <hr style="margin: 10px 0; border: 0; border-top: 1px solid #eee;">
+    <div id="winner-banner" class="winner-banner"></div>
+  </div>
+
+  <!-- الخريطة (اليسار - الثلثين) -->
+  <div id="map"></div>
+</div>
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- ملف الجافاسكريبت -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/js/all.js" integrity="sha512-YbiNgTNv2GVfwJwqGr9Xv9xWzPIEwaDOv3f2S6HFbRVeo/xuM87nKqkmBPctPP3sbvxv3EpNIRss+3gjEJbVrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+/* =========================================
+   1. الإعدادات العامة وإعادة الضبط
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  background-color: #f4f7fc;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. قسم الإدخال (خلفية الخريطة الداكنة)
+   ========================================= */
+.input-section {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 40px 20px;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)),
+    url("https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   تنسيق الحاوية الأساسية لتوسيط الفورم وزر الرسم تحته
+   ========================================= */
+.input-section {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* ترتيب العناصر بشكل عمودي (الفورم ثم الزر تحته) */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 30px 20px;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+    url("https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 20px; /* المسافة الفاصلة بين صندوق الفورم وزر الرسم تحته */
+}
+
+/* =========================================
+   بطاقة النموذج الداكنة
+   ========================================= */
+/* =========================================
+   بطاقة النموذج بالثيم الفاتح الاحترافي (Soft Light Glassmorphism)
+   ========================================= */
+.card.form-card {
+  background: rgba(248, 250, 252, 0.92); /* رمادي فاتح ناعم وشفاف قليلاً */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.form-card h2 {
+  color: #0f172a; /* لون داكن احترافي للعنوان */
+  margin-bottom: 25px;
+  font-size: 22px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #334155; /* لون وضوح عالي ومريح */
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #ffffff; /* حقول الإدخال بيضاء صافية لتبرز بوضوح */
+  color: #0f172a;
+  transition: all 0.25s ease;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* زر الحفظ الأساسي */
+.btn-save {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+}
+
+.counter-msg {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* =========================================
+   3. زر رسم الخريطة (تصغيره ومكانه الاحترافي كزر عائم بجانب النموذج)
+   ========================================= */
+.side-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   زر رسم الخريطة (بحجم أنيق وموضع أسفل الفورم مباشرة)
+   ========================================= */
+.btn-draw {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f8fafc;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 12px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 450px; /* ليكون بنفس عرض الفورم تماماً ويبدو منسقاً */
+}
+
+.btn-draw:hover {
+  transform: translateY(-2px);
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #3b82f6;
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+/* =========================================
+   5. قسم الخريطة واللوحة الجانبية للنتائج
+   ========================================= */
+.map-section {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  direction: rtl;
+}
+
+#map {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.side-panel {
+  width: 360px;
+  min-width: 320px;
+  height: 100%;
+  background: #ffffff;
+  padding: 24px 20px;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+  z-index: 1000;
+  border-left: 1px solid #e2e8f0;
+}
+
+/* عناوين اللوحة الجانبية */
+.side-panel h2,
+.side-panel h3 {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: right;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+
+.side-panel h4 {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.side-panel p {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   ========================================= */
+.side-panel {
+  width: 390px;
+  min-width: 340px;
+  height: 100%;
+  background: rgba(
+    226,
+    232,
+    240,
+    0.95
+  ); /* درجة رمادي أغمق وأوضح قليلاً لتمييز اللوحة */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(148, 163, 184, 0.5); /* إطار محيط كامل يحدد القسم باحترافية */
+  border-left: 2px solid rgba(148, 163, 184, 0.5);
+  border-radius: 16px 0 0 16px; /* انحناءة خفيفة تضفي طابعاً مودرن من الأعلى والأسفل */
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.12);
+  padding: 30px 22px;
+  overflow-y: auto;
+  color: #0f172a;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: right;
+  direction: rtl;
+}
+
+/* تنسيق العنوان الاحترافي العلوي للوحة النتائج */
+.side-panel > h2,
+.side-panel > h3 {
+  color: #0f172a;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #cbd5e1;
+  padding-bottom: 15px;
+}
+
+/* بطاقات النتائج الداخلية لتتطابق مع نفس الثيم */
+.result-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.result-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
+}
+
+/* بطاقة مستفيد داخل النطاق */
+.card-inside {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+  border-right: 4px solid #10b981;
+  color: #166534;
+}
+
+/* بطاقة مستفيد خارج النطاق */
+.card-outside {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+  border-right: 4px solid #ef4444;
+  color: #991b1b;
+}
+
+/* بطاقة الفائز / الأقرب لمحيط الدائرة */
+.card-winner,
+.winner-banner {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 1px solid #f59e0b;
+  border-radius: 14px;
+  padding: 16px;
+  margin-top: 5px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+  color: #92400e;
+  text-align: right;
+}
+
+.card-winner h3,
+.winner-banner h3 {
+  color: #b45309;
+  font-size: 15px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.card-winner p,
+.winner-banner p {
+  color: #78350f;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+.custom-red-marker{
+  background-color: #ff690c;
+ width: 10px;
+ height: 10px;
+  border-radius: 50%;
+  box-shadow:  0 0 8px rgba(0, 0, 0, 0.4);
+}
